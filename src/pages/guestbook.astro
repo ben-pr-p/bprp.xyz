@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
-import Guestbook from "@/components/Guestbook.astro";
+import GuestbookComponent from "@/components/Guestbook.astro";
 import { SITE } from "@/config";
 ---
 
@@ -11,9 +11,9 @@ import { SITE } from "@/config";
   <Header />
   <Breadcrumb />
   <main id="main-content">
-    <section id="guestbook" class="prose mb-28 max-w-3xl prose-img:border-0">
+    <section id="guestbook-section" class="prose mb-28 max-w-3xl prose-img:border-0">
       <h1 class="text-2xl tracking-wider sm:text-3xl mb-8">Guestbook</h1>
-      <Guestbook />
+      <GuestbookComponent />
     </section>
   </main>
   <Footer />
