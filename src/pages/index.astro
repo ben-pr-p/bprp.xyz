@@ -25,7 +25,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <main id="main-content" data-layout="index">
     <section id="hero" class="pt-8 pb-6">
       <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mingalaba
+        Hello!
       </h1>
       <a
         target="_blank"
@@ -42,21 +42,19 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         <span class="sr-only">RSS Feed</span>
       </a>
 
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
       <p class="mt-2">
-        Read the blog posts or check
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+        My name is Ben Packer and I am a Brooklyn based software engineer and socialist passionate about the upcoming PostgreSQL release and surviving the 21st century.
       </p>
+
+      <p class="mt-2">
+        In 2019, I was a co-founder of Rewired Coop, a technology coop building software for organizers with roots in the Bernie 2020 campaign and the Democratic Socialist left.
+      </p>
+
+      <p class="mt-2">
+        In 2024, I began my current role working on the technology for communications and organizing systems for the United Auto Workers.
+      </p>
+
+
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
