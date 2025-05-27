@@ -5,7 +5,7 @@ title: Software Design and The Structure of Political Organization
 slug: software-design-and-political-organization
 featured: true
 draft: false
-description: A talk exploring the parallels between software architecture and political organizing structures
+description: A talk exploring the influence of organizing software architecture and the resulting political organization
 tags:
   - political
   - organizing

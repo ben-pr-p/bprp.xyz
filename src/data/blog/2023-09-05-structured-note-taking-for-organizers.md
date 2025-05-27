@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2023-09-05
 title: Structured Note Taking for Organizers
 slug: structured-note-taking-for-organizers
-featured: true
+featured: false
 draft: false
 description: Making it easy to extract meaningful structured data from organizing conversations without burdening organizers
 tags:
