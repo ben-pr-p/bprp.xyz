@@ -1,0 +1,6 @@
+- Remix
+- Jotai
+- tRPC via TRPC
+- Use tailwind, but shadcn ui instead
+- React email
+- Hydrating jotai trpc's (fetch if not hydrated)
