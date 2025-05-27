@@ -4,7 +4,7 @@ pubDatetime: 2023-08-29
 title: Let's Keep Loneliness Painful — AI Girlfriends, and the Constituency of Perverted Consumers
 slug: lets-keep-loneliness-painful
 featured: false
-draft: false
+draft: true
 description: On exploitation, pain, and the political challenges of consumer technology addiction
 tags:
   - political

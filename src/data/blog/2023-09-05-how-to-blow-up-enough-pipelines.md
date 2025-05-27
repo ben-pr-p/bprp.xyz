@@ -10,7 +10,7 @@ tags:
   - political
   - environment
   - strategy
-  - collaboration
+  - seeking-collaborators
 ---
 
 Inspired by the book and movie [How to Blow Up a Pipeline](https://en.wikipedia.org/wiki/How_to_Blow_Up_a_Pipeline), I'm interested in the question: how to blow up enough pipelines? And which ones?

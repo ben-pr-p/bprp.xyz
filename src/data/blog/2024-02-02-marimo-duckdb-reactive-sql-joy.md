@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2024-02-02
 title: Marimo + DuckDB is a Reactive SQL Joy
 slug: marimo-duckdb-reactive-sql-joy
-featured: false
+featured: true
 draft: false
 description: A detailed exploration of using Marimo notebooks with DuckDB's Relational API for reactive SQL workflows
 tags:

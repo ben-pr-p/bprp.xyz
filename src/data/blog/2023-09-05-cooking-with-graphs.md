@@ -11,7 +11,7 @@ tags:
   - llm
   - fine-tuning
   - graph-database
-  - collaboration
+  - seeking-collaborators
 ---
 
 > [!caution] I'm not interested in working on this anymore, but I'm leaving it up here in case you are!

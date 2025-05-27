@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2023-11-13
 title: Software Design and The Structure of Political Organization
 slug: software-design-and-political-organization
-featured: false
+featured: true
 draft: false
 description: A talk exploring the parallels between software architecture and political organizing structures
 tags:

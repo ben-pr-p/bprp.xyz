@@ -11,7 +11,7 @@ tags:
   - database
   - redis
   - performance
-  - collaboration
+  - seeking-collaborators
 ---
 
 ### Background

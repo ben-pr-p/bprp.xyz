@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2024-11-12
 title: Salience, Identity Formation, Field Tactics, and Political Strategy
 slug: salience-identity-and-political-strategy
-featured: false
+featured: true
 draft: false
 description: A coherent theory of political campaigning effects through identity preservation and cognitive dissonance minimization
 tags:

@@ -4,7 +4,7 @@ pubDatetime: 2024-09-08
 title: Digital LLM Automation via Infrastructure as Code
 slug: digital-llm-automation-via-infrastructure-as-code
 featured: false
-draft: false
+draft: true
 description: Reducing digital infrastructure automation to software engineering using text-based tooling
 tags:
   - technical

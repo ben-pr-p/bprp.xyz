@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2024-01-18
 title: Kysely Access Control
 slug: kysely-access-control
-featured: false
+featured: true
 draft: false
 description: A Kysely plugin implementing permissions at the query builder layer with both high-level grants and low-level allow/deny APIs
 tags:

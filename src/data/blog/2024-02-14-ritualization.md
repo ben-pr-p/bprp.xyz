@@ -4,7 +4,7 @@ pubDatetime: 2024-02-14
 title: Ritualization
 slug: ritualization
 featured: false
-draft: false
+draft: true
 description: BLM + Palestine, events becoming a lifestyle
 tags:
   - political

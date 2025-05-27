@@ -9,7 +9,7 @@ description: quick recipe I am very happy with for use with [Jotai](https://jota
 tags:
   - technical
   - jotai
-	- react
+  - react
 ---
 Here's a quick recipe I am very happy with for use with [Jotai](https://jotai.org/). It's a huge time saver, very little code, and it let's you use a super easy mental model for updated state of giant nested objects.
 
@@ -53,9 +53,9 @@ const EditAnotherObjectName = () => {
   return (
     <input value={anotherObject.name}
       onChange={ev => {
-	    setAnotherObject(draft => {
-	      draft.name = ev.target.value
-	    })
+      setAnotherObject(draft => {
+        draft.name = ev.target.value
+      })
       }
     />
   );
