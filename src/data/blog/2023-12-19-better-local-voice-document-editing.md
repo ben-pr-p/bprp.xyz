@@ -11,7 +11,7 @@ tags:
   - llm
   - voice
   - productivity
-  - collaboration
+  - seeking-collaborators
 ---
 
 # Problem
