@@ -1,7 +1,7 @@
 ---
 author: Ben Packer
 pubDatetime: 2023-09-05
-title: How to Blow Up Enough Pipelines
+title: "Seeking Collaborators: How to Blow Up Enough Pipelines"
 slug: how-to-blow-up-enough-pipelines
 featured: false
 draft: false

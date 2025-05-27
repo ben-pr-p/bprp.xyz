@@ -1,7 +1,7 @@
 ---
 author: Ben Packer
 pubDatetime: 2023-12-19
-title: Better Local Voice Document Editing
+title: "Seeking Collaborators: Better Local Voice Document Editing"
 slug: better-local-voice-document-editing
 featured: false
 draft: false

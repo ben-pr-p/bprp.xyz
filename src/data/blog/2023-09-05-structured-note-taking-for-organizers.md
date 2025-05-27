@@ -1,7 +1,7 @@
 ---
 author: Ben Packer
 pubDatetime: 2023-09-05
-title: Structured Note Taking for Organizers
+title: "Seeking Collaborators: Structured Note Taking for Organizers"
 slug: structured-note-taking-for-organizers
 featured: false
 draft: false

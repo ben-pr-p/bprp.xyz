@@ -1,7 +1,7 @@
 ---
 author: Ben Packer
 pubDatetime: 2023-09-05
-title: An Ahead of Time Database
+title: "Seeking Collaborators: An Ahead of Time Database"
 slug: an-ahead-of-time-database
 featured: false
 draft: false

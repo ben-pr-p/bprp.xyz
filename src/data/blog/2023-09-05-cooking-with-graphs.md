@@ -1,7 +1,7 @@
 ---
 author: Ben Packer
 pubDatetime: 2023-09-05
-title: Cooking with Graphs (Fine Tuning an LLM + Graph Semantic Analysis)
+title: "Seeking Collaborators: Cooking with Graphs (Fine Tuning an LLM + Graph Semantic Analysis)"
 slug: cooking-with-graphs
 featured: false
 draft: false

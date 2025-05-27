@@ -4,7 +4,7 @@ pubDatetime: 2023-11-29
 title: Embeddings and The Space of Possible Ideas
 slug: embeddings-and-the-space-of-possible-ideas
 featured: false
-draft: false
+draft: true
 description: Thinking about typically non-mathematical concepts in n-dimensional space
 tags:
   - technical
