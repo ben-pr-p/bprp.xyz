@@ -9,7 +9,6 @@ description: A linguistic analysis of the hot dog sandwich debate using intensio
 tags:
   - random
   - linguistics
-  - humor
 ---
 
 The "are hot dogs sandwiches" debate is fun (for about five minutes). This post is meant to equip you with just enough linguistic knowledge so that, at your next function where this is a suggested ice breaker question, you can pedantically explain the nature of the disagreement.
