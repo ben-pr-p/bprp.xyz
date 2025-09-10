@@ -9,7 +9,9 @@ draft: false
 description: Reflections on what I'm actually best at and how I could grow 8
   years into my career
 ---
-**I'm a good listener**. By this, I do not mean that I make you feel heard or am good to vent with. In fact, as many people in my personal life will attest, venting with me is often unsatisfying and fails to deliver the catharsis one may find with a different peer.
+## **1: I'm a good listener**
+
+By this, I do not mean that I make you feel heard or am good to vent with. In fact, as many people in my personal life will attest, venting with me is often unsatisfying and fails to deliver the catharsis one may find with a different peer.
 
 When I say I'm a good listener, I mean that I am good at taking what people say and putting it into a cohesive understanding in my own head of what and how they think.
 
@@ -17,7 +19,9 @@ This makes me good at resolving misunderstandings and disagreements, which are u
 
 If I inspect this skill a bit, I think the key is to try to defer how you resolve a speaker's references until you've gotten enough information through more examples that your resolution is right.
 
-**I'm good at achieving alignment.** I think this flows naturally from being a good listener. I often find myself in un-aligned or under-aligned environments – people at work saying they have no idea what's going on, don't know why things are happening, etc. People in political spaces who think they agree but can't actually come to a decision.
+## **2: I'm good at achieving alignment**
+
+I think this flows naturally from being a good listener. I often find myself in un-aligned or under-aligned environments – people at work saying they have no idea what's going on, don't know why things are happening, etc. People in political spaces who think they agree but can't actually come to a decision.
 
 I think I'd define alignment via some test: two people are aligned on some idea _X_ (_X_ could be a technical approach, a political ideology, a business plan) if they both provide some answer _A_ to some question _Q_ if _A_ necessarily flows from _X_.
 
@@ -31,4 +35,4 @@ I think _the number two reason teams of people are not aligned is that the manag
 
 I think _the number three reason is that the manager can't test its coherence_. Ideally, you reach alignment and then you test it on the spot.
 
-**I'm not afraid of difficult solutions.** df
+## **3: I'm not afraid of difficult solutions.**
