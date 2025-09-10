@@ -3,7 +3,7 @@ author: Ben Packer
 pubDatetime: 2025-09-09
 modDatetime: 2025-09-09
 title: My Top 3 Professional Skills
-slug: my-top-skills
+slug: my-top-3-professional-skills
 featured: true
 draft: false
 description: I wrote a blog post where I mansplain how good of a listener I am
