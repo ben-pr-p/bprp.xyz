@@ -9,7 +9,7 @@ draft: false
 description: Reflections on what I'm actually best at and how I could grow 8
   years into my career
 ---
-## **1 – I'm a good listener**
+## **1 – I'm a good listener.**
 
 By this, I do not mean that I make you feel heard or am good to vent with. In fact, as many people in my personal life will attest, venting with me is often unsatisfying and fails to deliver the catharsis one may find with a different peer.
 
@@ -19,7 +19,7 @@ This makes me good at resolving misunderstandings and disagreements, which are u
 
 If I inspect this skill a bit, I think the key is to try to defer how you resolve a speaker's references until you've gotten enough information through more examples that your resolution is right.
 
-## **2 – I'm good at achieving alignment**
+## **2 – I'm good at achieving alignment.**
 
 I think this flows naturally from being a good listener. I often find myself in un-aligned or under-aligned environments – people at work saying they have no idea what's going on, don't know why things are happening, etc. People in political spaces who think they agree but can't actually come to a decision.
 
