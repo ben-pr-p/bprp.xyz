@@ -2,12 +2,11 @@
 author: Ben Packer
 pubDatetime: 2025-09-09
 modDatetime: 2025-09-09
-title: My Best Skills
+title: My Top 3 Professional Skills
 slug: my-top-skills
 featured: true
 draft: false
-description: Reflections on what I'm actually best at and how I could grow 8
-  years into my career
+description: I wrote a blog post where I mansplain how good of a listener I am
 ---
 ## **1 – I'm a good listener.**
 
