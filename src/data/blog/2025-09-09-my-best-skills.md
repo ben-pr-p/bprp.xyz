@@ -20,7 +20,7 @@ If I inspect this skill a bit, I think the key is to try to defer how you resolv
 
 ## **2 – I'm good at achieving alignment.**
 
-I think this flows naturally from being a good listener. I often find myself in un-aligned or under-aligned environments – people at work saying they have no idea what's going on, don't know why things are happening, etc. People in political spaces who think they agree but can't actually come to a decision.
+I think this flows naturally from being a good listener. I often find myself in un-aligned or under-aligned environments: i.e., people at work saying they have no idea what's going on, don't know why things are happening, etc. People in political spaces who think they agree but can't actually come to a decision.
 
 I think I'd define alignment via some test: two people are aligned on some idea _X_ (_X_ could be a technical approach, a political ideology, a business plan) if they both provide some answer _A_ to some question _Q_ if _A_ necessarily flows from _X_.
 
@@ -32,6 +32,8 @@ I think a manager of a team does not care to achieve it if either _a)_ they do n
 
 I think _the number two reason teams of people are not aligned is that the manager can't listen well enough to perceive it's absence,_ or misperceives an absence of alignment as individual dullness in each team member. This is where listening comes in: you have to be able to hear someone say something wrong and construct a theory of why they said that in terms of some deficiency of understanding of _X_. This will be hard for you if you do not have a broad understanding of all of the different perspectives of _X_ yourself. You can't resolve a conceptual reference they are making to an idea you haven't heard of.
 
-I think _the number three reason is that the manager can't test its coherence_. Ideally, you reach alignment and then you test it on the spot.
+I think _the number three reason is that the manager can't test its coherence_. Ideally, you reach alignment and then you test it on the spot. I think it's always best to test it on the spot. If you test it right after explaining it, you can correct any misunderstanding without re-building up all the context you've worked on, without letting any misunderstandings solidify, and without having to experience a mistake from misalignment.
+
+However, being able to test it on the spot also means being a good listener (or having a good theory of mind - what I realize I've been talking about this whole time). I
 
 ## **3 – I'm not afraid of difficult solutions.**
