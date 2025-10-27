@@ -5,7 +5,7 @@ modDatetime: 2025-09-09
 title: My Top 3 Professional Skills
 slug: my-top-3-professional-skills
 featured: true
-draft: false
+draft: true
 description: I wrote a blog post where I mansplain how good of a listener I am
 ---
 ## **1 – I'm a good listener.**
