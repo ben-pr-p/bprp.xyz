@@ -1,5 +1,6 @@
 ---
 author: Ben Packer
+pubDatetime: 2025-07-31
 title: The Labor Movement Should Build a Chatbot
 slug: labor-chatbot
 featured: true
