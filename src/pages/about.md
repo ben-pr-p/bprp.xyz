@@ -22,8 +22,6 @@ You can email me at [ben.paul.ryan.packer@gmail.com](mailto:ben.paul.ryan.packer
 
 You _should_ email me if:
 
-*   <TODO>
-    
 *   You want to go to a Ninja Gym in Brooklyn and play around in the ball pits and stuff.
     
 *   You would like to co-organize a group industrial tourism trip. We can visit all the types of power plants, mines, small & large farms/fisheries, water and waste treatment, recycling & trash, data centers, ports, logging, etc. It would be a lot of planning but I think a good time!
@@ -33,4 +31,4 @@ You _should_ email me if:
 
 ## Billie
 
-I have a lab/pitt+ mutt named Billie. I usually am not too interested in photos of other people's dogs, but you can find photos of her <TODO>
+I have a lab/pitt+ mutt named Billie. I usually am not too interested in photos of other people's dogs, but you can find photos of her \[here\](https://bprp.xyz/billie).
