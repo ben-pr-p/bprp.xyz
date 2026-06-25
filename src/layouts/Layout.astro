@@ -126,11 +126,17 @@ const structuredData = {
     }
 
     <!-- Plausible Analytics -->
-    <script defer data-domain="bprp.xyz" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.js" is:inline></script>
+    <script
+      defer
+      data-domain="bprp.xyz"
+      src="https://plausible.io/js/script.file-downloads.hash.outbound-links.js"
+      is:inline></script>
     <script is:inline>
-      window.plausible = window.plausible || function() { 
-        (window.plausible.q = window.plausible.q || []).push(arguments) 
-      }
+      window.plausible =
+        window.plausible ||
+        function (...args) {
+          (window.plausible.q = window.plausible.q || []).push(args);
+        };
     </script>
 
     <ClientRouter />

@@ -25,11 +25,13 @@ Unfortunately, just using pure speech to text does not work for this purpose. I'
 I think it could work very well to use a large language model (potentially even a local one) to extract document edits from chunks of speech. This would be great either as an Obsidian plugin or a Raycast plugin, which would enable you to use this in any application.
 
 The language model would be fed:
+
 - The current document state, alongside a `<CURSOR>` indicator to understand where the user's focus is
 - A chunk of transcribed speech
 - A rolling window of previous transcribed speech with resulting model actions
 
 And asked to produce a JSON object corresponding to a document edit. Maybe something like:
+
 ```json
 {
 	"action": "insert" | "delete" | "replace",
@@ -69,11 +71,12 @@ I used the same system prompt ([see below](#System%20Prompt)) for all of these t
 
 As you can see, I'm telling it that there is already a document with a header and a single line introducing the project, and there's a next speech chunk which continues the thread. it doesn't really get the whole insert at CURSOR thing.
 
-Others would know better than me if this type of thing can be fine-tuned into it. 
+Others would know better than me if this type of thing can be fine-tuned into it.
 
 ### GPT 3.5 Results
 
 3.5 does a lot better. For the same example above, it outputs:
+
 ```json
 {
   "action": "insert",
@@ -83,14 +86,16 @@ Others would know better than me if this type of thing can be fine-tuned into it
 ```
 
 However, it fails at some more complicated tasks. For example, if the input is:
+
 ```json
-{ 
-	"document": "# Introduction\nThis project is a way of{CURSOR}",
-	"nextSpeechChunk": "translating between two different file formats easily ok next section is called usage"
+{
+  "document": "# Introduction\nThis project is a way of{CURSOR}",
+  "nextSpeechChunk": "translating between two different file formats easily ok next section is called usage"
 }
 ```
 
 It responds either by including the transition language, or fully omitting the transition language
+
 ```json
 {
   "action": "insert",
@@ -100,6 +105,7 @@ It responds either by including the transition language, or fully omitting the t
 ```
 
 Or by forgetting about the first part, and just adding a new header:
+
 ```json
 {
   "action": "insert",
@@ -116,15 +122,15 @@ GPT-4 does very well at this task, and responds with:
 
 ```json
 {
-	"action": "insert",
-	"location": "{CURSOR}",
-	"text": " translating between two different file formats easily.\n\n# Usage\n"
+  "action": "insert",
+  "location": "{CURSOR}",
+  "text": " translating between two different file formats easily.\n\n# Usage\n"
 }
 ```
 
 And can even handle the `{CURSOR}` being in the wrong place, properly adapting the location to an `append`.
 
-Obviously GPT-4 is too expensive (and slow) for this to be used for the majority of typing on a day to day basis, but potentially a few days of consistent GPT-4 usage 
+Obviously GPT-4 is too expensive (and slow) for this to be used for the majority of typing on a day to day basis, but potentially a few days of consistent GPT-4 usage
 
 # I really want this product to exist, please build it
 
@@ -135,8 +141,9 @@ Please build it, with me or not!
 # System Prompt
 
 Here is the system prompt that's working the best for reference:
+
 ```
-You are Dolphin, a helpful AI assistant. Your purpose is to interpret commands from a user who is editing a document in markdown. 
+You are Dolphin, a helpful AI assistant. Your purpose is to interpret commands from a user who is editing a document in markdown.
 
 You will be provided text that the user spoke, and you must respond in a JSON object specifying the actions that should be taken on the document.
 

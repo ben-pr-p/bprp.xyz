@@ -19,34 +19,34 @@ This page has some queries I find myself returning to over and over again.
 ## Finding long running queries
 
 ```sql
-SELECT  
-  pid,  
+SELECT
+  pid,
   wait_event,
   wait_event_type,
-  now() - pg_stat_activity.query_start AS duration,  
-  query,  
-  state  
-FROM pg_stat_activity  
+  now() - pg_stat_activity.query_start AS duration,
+  query,
+  state
+FROM pg_stat_activity
 WHERE (now() - pg_stat_activity.query_start) > interval '10 seconds'
   and state <> 'idle';
 ```
-
 
 If your queries are really long (textually):
+
 ```sql
-SELECT  
-  pid,  
+SELECT
+  pid,
   wait_event,
   wait_event_type,
-  now() - pg_stat_activity.query_start AS duration,  
-  substring(query from 0 for 100) as query,  
-  state  
-FROM pg_stat_activity  
+  now() - pg_stat_activity.query_start AS duration,
+  substring(query from 0 for 100) as query,
+  state
+FROM pg_stat_activity
 WHERE (now() - pg_stat_activity.query_start) > interval '10 seconds'
   and state <> 'idle';
 ```
 
-Note that these queries *filter out* idle connections. If that's something you care about, include that. I usually don't care about that.
+Note that these queries _filter out_ idle connections. If that's something you care about, include that. I usually don't care about that.
 
 ## Autovaccuum and Dead Tuples
 
@@ -57,7 +57,7 @@ select
   schemaname,
   relname,
   n_live_tup,
-  n_dead_tup, 
+  n_dead_tup,
   (n_dead_tup / (n_live_tup + n_dead_tup)::float) * 100 as percent_dead
 from pg_stat_user_tables
 where (n_live_tup + n_dead_tup) > 0
@@ -67,7 +67,7 @@ order by 4 desc;
 **Checking when autovacuum was last run:**
 
 ```sql
-select 
+select
   relname,
   greatest(last_vacuum, last_autovacuum) as last_any_vacuum,
   last_vacuum,
@@ -84,7 +84,7 @@ order by 2 asc;
 **Version of the above with intervals (easier to read in my opinion):**
 
 ```sql
-select 
+select
   relname,
   now() - greatest(last_vacuum, last_autovacuum) as last_any_vacuum,
   now() - last_vacuum as last_vacuum,
@@ -101,14 +101,14 @@ order by 2 asc;
 **Dead tuples and last any vacuum combined**:
 
 ```sql
-select 
+select
   relname,
   now() - greatest(last_vacuum, last_autovacuum) as last_any_vacuum,
   n_live_tup,
-  n_dead_tup, 
+  n_dead_tup,
   case when n_live_tup + n_dead_tup = 0 then
     0
-  else 
+  else
     (n_dead_tup / (n_live_tup + n_dead_tup)::float)
   end as percent_dead
 from pg_stat_user_tables

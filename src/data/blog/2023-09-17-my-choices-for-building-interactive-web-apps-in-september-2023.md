@@ -15,6 +15,7 @@ tags:
 ---
 
 As of September 2023, I am planning on starting new web apps (highly interactive single page applications) using the following technologies:
+
 - [bun](https://bun.sh/)
 - [hono](https://hono.dev/)
 - [tRPC](https://trpc.io/)
@@ -30,37 +31,36 @@ Additionally, I am planning on building things to run on horizontally scalable m
 
 I am also not planning on using Neon, Xata, Supabase, or any other serverless-ey provider for Postgres, instead opting for Fly, Render, Kubernetes, or something else more stateful.
 
-I'm putting this page up in case it's of interest to anyone. I'm also *not* going to edit it and instead let it become out of date, which might be interesting. 
-
+I'm putting this page up in case it's of interest to anyone. I'm also _not_ going to edit it and instead let it become out of date, which might be interesting.
 
 > [!success] [Check out my starter repo with all of this configured!](https://github.com/ben-pr-p/bprp-2023-starter)
 
-
 # Affordances of the Stack
 
-## "Decoupled" End to End Type Safety 
+## "Decoupled" End to End Type Safety
 
-This stack offers end-to-end type safety *without* strong coupling between database fields and client side code. Let's break that down.
+This stack offers end-to-end type safety _without_ strong coupling between database fields and client side code. Let's break that down.
 
 **End-to-end type safety** means that Typescript is used to verify key components of the correctness of every function call, HTTP request, or database query. Inside my application code, Typescript already enforced this. `kysely-codegen` + `kysely` allows me to use Typescript to check the boundary between my server and database and `tRPC` allows me to check the boundary between my clients and server.
 
-**"Decoupled" end-to-end type safety** means that these two boundaries (database <-> server, server <-> client) can be evolved separately. For example, in this stack I can change the name or type of a database field without changing the name or type of the corresponding field in the client/server contract. In my experience, this is absolutely something you'll want when doing complex rollouts of database migrations. This is not true of many other commons ways to approach end-to-end type safety, such as [Postgraphile](https://graphile.org/postgraphile/)/[Hasura](https://hasura.io/) + [GraphQL Codegen ](https://the-guild.dev/graphql/codegen), [Supabase](https://supabase.com/)/[Postgrest](https://postgrest.org/en/stable/), or other low-code backends. Some of these tools have ways to progressively evolve the schema, but it is undoubtedly harder. 
+**"Decoupled" end-to-end type safety** means that these two boundaries (database <-> server, server <-> client) can be evolved separately. For example, in this stack I can change the name or type of a database field without changing the name or type of the corresponding field in the client/server contract. In my experience, this is absolutely something you'll want when doing complex rollouts of database migrations. This is not true of many other commons ways to approach end-to-end type safety, such as [Postgraphile](https://graphile.org/postgraphile/)/[Hasura](https://hasura.io/) + [GraphQL Codegen ](https://the-guild.dev/graphql/codegen), [Supabase](https://supabase.com/)/[Postgrest](https://postgrest.org/en/stable/), or other low-code backends. Some of these tools have ways to progressively evolve the schema, but it is undoubtedly harder.
 
 ## Near 0 Configuration, Ultra Fast, No JS-Powered Bundling in my Dev Environment
 
-On previous setups where the client (and or server) were bundled with Webpack and/or Typescript itself, the high memory usage and slow iteration speed were a constant source of frustration in development. Looking back, I spent significant time waiting for recompilation or dealing with the downstream consequences of having my computers resources fully saturated and attempting to video chat, screen share, or use an external monitor. 
+On previous setups where the client (and or server) were bundled with Webpack and/or Typescript itself, the high memory usage and slow iteration speed were a constant source of frustration in development. Looking back, I spent significant time waiting for recompilation or dealing with the downstream consequences of having my computers resources fully saturated and attempting to video chat, screen share, or use an external monitor.
 
 I now have a new fancy M2 mac that I think could handle the old way I was developing, but I still want to optimize for overall development joy and speed as a key part of what will help me stay happy and free of frustration while developing.
 
 ## Client/Server Shared Code
 
-I like Elixir a lot and wish I had more opportunities to use it, but I anticipate that most complex interactive single page applications **will** share logic between the client and server at some point. 
+I like Elixir a lot and wish I had more opportunities to use it, but I anticipate that most complex interactive single page applications **will** share logic between the client and server at some point.
 
-I actually should amend that to **could benefit from sharing**. You never *need* to share the code itself: the server is right there, just an HTTP request away. However, if I write my application in a way that sharing code between the client and server is easy, I'm more likely to make choices that result in a better user experience.
+I actually should amend that to **could benefit from sharing**. You never _need_ to share the code itself: the server is right there, just an HTTP request away. However, if I write my application in a way that sharing code between the client and server is easy, I'm more likely to make choices that result in a better user experience.
 
-It's also easy for front-end developers to write their own server side API calls. 
+It's also easy for front-end developers to write their own server side API calls.
 
 # Specific Choices
+
 ## Bun (at least for install, build, test)
 
 For me, the biggest benefit of Bun is the reduction in development complexity. They claim Bun's built-in webserver is faster than Node and Deno's, but I really don't care about that: my web application is not a hello world benchmark app, and the bottleneck will be database queries, not HTTP overhead.
@@ -79,25 +79,25 @@ I may choose to use Node in production by using `bun build` to build a Javascrip
 
 ## Hono
 
-Hono seems nice, but really I just don't need or want much from the "router" component of the stack. I'm going to use tRPC, and if I'm not going to use tRPC, I will likely be using GraphQL. 
+Hono seems nice, but really I just don't need or want much from the "router" component of the stack. I'm going to use tRPC, and if I'm not going to use tRPC, I will likely be using GraphQL.
 
-I want to accomplish simple routing: a handful of different routes, maybe separated by tenant or by role. Other than that, I don't want it to do much. 
+I want to accomplish simple routing: a handful of different routes, maybe separated by tenant or by role. Other than that, I don't want it to do much.
 
 Hono is just simple and fully typed. Express is simple, but it's typing leaves some gaps. You will likely run into an `any`, and it will probably be annoying when it happens to `console.log(req.something)` to figure out what's available.
 
-Additionally, I like the "double stack" middleware Hono (and Koa originally) where you can run something both before *and after* the main request cycle:
+Additionally, I like the "double stack" middleware Hono (and Koa originally) where you can run something both before _and after_ the main request cycle:
 
 ```typescript
-app.use(async (_, next) => { 
-  console.log('middleware 1 start')
-  await next()
-  console.log('middleware 1 end') 
-})
+app.use(async (_, next) => {
+  console.log("middleware 1 start");
+  await next();
+  console.log("middleware 1 end");
+});
 ```
 
 In previous work, I monkey-patched Express's `req.end` for monitoring. It worked, but there were some bugs as a result of incorrect implementations.
 
-Ultimately, I really don't want any new vocabulary words here. When I look at the overview for [NestJS](https://docs.nestjs.com/modules) or other "enterprise" frameworks, there's lots of things to learn. 
+Ultimately, I really don't want any new vocabulary words here. When I look at the overview for [NestJS](https://docs.nestjs.com/modules) or other "enterprise" frameworks, there's lots of things to learn.
 
 Ultimately, 90% of my backend will translate user requests into SQL queries and apply some light transformations on the results, and I believe it's simpler to develop and optimize when we minimize our abstraction distance from that core function.
 
@@ -107,13 +107,13 @@ I've been personally using React for 8 years now. It's gotten some hate and comp
 
 ## Jotai
 
-For me, Jotai is the state management approach that makes it easiest to build things that are fast *by default*. 
+For me, Jotai is the state management approach that makes it easiest to build things that are fast _by default_.
 
 I just keep in mind that anytime I pass an object that resides in state down to a child component, I am likely going to encounter unnecessary rerenders that would solved by replacing that with an atom or key to an atom family.
 
 From there, making that replacement is pretty simple: going from a simple `useState` to a `useAtom` or `useAtomFamily` is easier than refactoring with `zustand` or a reducer based approach.
 
-I've also enjoyed how easy it is to connect atoms to `localStorage`, proxy them, and build them up out of components. 
+I've also enjoyed how easy it is to connect atoms to `localStorage`, proxy them, and build them up out of components.
 
 ## graphile-migrate
 
@@ -127,7 +127,7 @@ Being able to trigger and manipulate asynchronous jobs with SQL is extremely pow
 
 Although Redis based solutions like [BullMQ](https://github.com/taskforcesh/bullmq) can have higher throughput, `graphile-worker`'s throughput is probably high enough for most projects, and the experience of re-queueing a thousand failed jobs or queueing a thousand at a time can't be matched.
 
-`graphile-worker` is also easy to test 
+`graphile-worker` is also easy to test
 
 The one downside of `graphile-worker` vs. a proprietary cloud solution (Google's Cloud tasks, SQS, or the third party [Inngest](https://www.inngest.com/)) is that `graphile-worker` needs a database connection open to find jobs. As a result, PostgreSQL + `graphile-worker` itself cannot wake a scale to 0 serverless function. That's fine by me – I'm happy with scale to 1.
 
@@ -173,19 +173,19 @@ Any solution that requires codegen to provide end-to-end type safety is a worse 
 
 Although with some investment (proper watching and rerunning scripts, etc.) you can engineer a decent development experience with codegen, there are still warts, like stale VSCode caches or additional time required to set up new instances of the codegen pipeline.
 
-That of course feels obvious, but in my opinion it's really worth choosing tooling around that fact. 
+That of course feels obvious, but in my opinion it's really worth choosing tooling around that fact.
 
 For example, you can of course write an OpenAPI compliant (or GraphQL) backend and then codegen a client. However, tRPC (or [garph](https://github.com/stepci/garph)) gives you that without codegen.
 
-If you have to use codegen, choose solutions that are further downstream and have to be run less often. Apollo Client codegen requires a rerun per GraphQL query, and Supabase's codegen must be run per each additional RPC call added, but [graphql-typed-client](https://github.com/helios1138/graphql-typed-client), [gqty](https://gqty.dev/) and kysely only run on schema change. 
+If you have to use codegen, choose solutions that are further downstream and have to be run less often. Apollo Client codegen requires a rerun per GraphQL query, and Supabase's codegen must be run per each additional RPC call added, but [graphql-typed-client](https://github.com/helios1138/graphql-typed-client), [gqty](https://gqty.dev/) and kysely only run on schema change.
 
 ## Why I chose codegen over Drizzle
 
 Despite the desired to avoid codegen, this stack uses codegen to generate Kysely's database type.
 
-The main alternative approach to not using codegen to type the server to database layer is to have an ORM generate the migrations, e.g., [Drizzle Migrations](https://orm.drizzle.team/docs/migrations). Drizzle's look to me to be the best out there, and the generated SQL looks readable and easily editable. 
+The main alternative approach to not using codegen to type the server to database layer is to have an ORM generate the migrations, e.g., [Drizzle Migrations](https://orm.drizzle.team/docs/migrations). Drizzle's look to me to be the best out there, and the generated SQL looks readable and easily editable.
 
-The downside of this is that the SQL migrations are not run and validated as part of the development flow. Even if we assuming the Drizzle generated SQL is perfect (which might very well be the case), I **will** need to edit it once I reach certain data volumes and uptime requirements. 
+The downside of this is that the SQL migrations are not run and validated as part of the development flow. Even if we assuming the Drizzle generated SQL is perfect (which might very well be the case), I **will** need to edit it once I reach certain data volumes and uptime requirements.
 
 As a result, when I start editing it, I lose the validation originally provided that my database objects and Typescript types line up, since Drizzle does re-validate that with my edited SQL.
 
@@ -205,17 +205,18 @@ There seem to be one key caveats that these services are leaving out of their ma
 
 The scenario I described above describes the vast majority of applications today and new applications that will come online.
 
-Moving to the edge will make your API slower because although 1 round trip occurs between your users and your server, *n* (where *n* is mostly greater than 1) round trip occurs between your server and your database.
+Moving to the edge will make your API slower because although 1 round trip occurs between your users and your server, _n_ (where _n_ is mostly greater than 1) round trip occurs between your server and your database.
 
 Of course, you may be able to carefully craft your application so that there's only 1 database query per request, but why bother! When my server is right next to my database, a single row fetch by index in Postgres, round trip, is 1-3ms, and it's a joy to program without having to worry about that.
 
-[Cloudflare's smart placement feature](https://developers.cloudflare.com/workers/configuration/smart-placement/) is designed to work around this fact, but their solution is basically just to intelligently *stop using the edge*. There are other ways to solve the problem for read only requests (using Fly [Postgres](https://fly.io/docs/postgres/) and [the replay header](https://fly.io/docs/reference/dynamic-request-routing/)), but I'm not sure how many of your routes you'll be able to confidently say involve 0 writes.
+[Cloudflare's smart placement feature](https://developers.cloudflare.com/workers/configuration/smart-placement/) is designed to work around this fact, but their solution is basically just to intelligently _stop using the edge_. There are other ways to solve the problem for read only requests (using Fly [Postgres](https://fly.io/docs/postgres/) and [the replay header](https://fly.io/docs/reference/dynamic-request-routing/)), but I'm not sure how many of your routes you'll be able to confidently say involve 0 writes.
 
 ## Don't Use "Scale to 0"
 
 The price difference between "scale to 0" (true "serverless") and "scale to small" (horizontally scaling always on containers that scale based on CPU/RAM and ) is often $5/month or less, and often the latter is even cheaper.
 
 For that $5/month, you get:
+
 - The ability to use any asynchronous job setup (`graphile-worker`, [BullMQ](https://github.com/taskforcesh/bullmq), regular RabbitMQ, etc.) and not just those that cloud vendors have configured their serverless functions to be woken by
 - The ability to run long running jobs, like uploading or processing a large file, instead of daisy chaining from one job to the other
 
@@ -224,6 +225,7 @@ There are some third party tools like [Inngest](https://www.inngest.com/) that d
 ## Note on Server Side Rendering
 
 There are many legitimate scenarios to use server side rendering, and this stack and post assume that none of them apply to you. Specifically, you:
+
 - Are building a highly interactive client
 - Don't care that much about initial page load
 - Don't care that much about [the waterfall problem](https://remix.run/docs/en/main/guides/data-loading), or are fine using `React.Suspense` and other engineering around it

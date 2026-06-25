@@ -75,12 +75,7 @@ All blog posts are stored in `src/data/blog` directory.
 
 ## 📖 Documentation
 
-Documentation can be read in two formats\_ _markdown_ & _blog post_.
-
-- Configuration - [markdown](src/data/blog/how-to-configure-astropaper-theme.md) | [blog post](https://astro-paper.pages.dev/posts/how-to-configure-astropaper-theme/)
-- Add Posts - [markdown](src/data/blog/adding-new-post.md) | [blog post](https://astro-paper.pages.dev/posts/adding-new-posts-in-astropaper-theme/)
-- Customize Color Schemes - [markdown](src/data/blog/customizing-astropaper-theme-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)
-- Predefined Color Schemes - [markdown](src/data/blog/predefined-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/predefined-color-schemes/)
+Documentation for Astro itself is available at [docs.astro.build](https://docs.astro.build/). Project-specific posts live in `src/data/blog/` and are available on the site under `/posts/`.
 
 ## 💻 Tech Stack
 
@@ -100,24 +95,17 @@ Documentation can be read in two formats\_ _markdown_ & _blog post_.
 You can start using this project locally by running the following command in your desired directory:
 
 ```bash
-# pnpm
-pnpm create astro@latest --template satnaing/astro-paper
-
-# npm
-npm create astro@latest -- --template satnaing/astro-paper
-
-# yarn
-yarn create astro --template satnaing/astro-paper
+bun create astro@latest --template satnaing/astro-paper
 ```
 
 Then start the project by running the following commands:
 
 ```bash
 # install dependencies if you haven't done so in the previous step.
-pnpm install
+bun install
 
 # start running the project
-pnpm run dev
+bun run dev
 ```
 
 As an alternative approach, if you have Docker installed, you can use Docker to run this project locally. Here's how:
@@ -149,16 +137,16 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                              | Action                                                                                                                           |
 | :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm install`                       | Installs dependencies                                                                                                            |
-| `pnpm run dev`                       | Starts local dev server at `localhost:4321`                                                                                      |
-| `pnpm run build`                     | Build your production site to `./dist/`                                                                                          |
-| `pnpm run preview`                   | Preview your build locally, before deploying                                                                                     |
-| `pnpm run format:check`              | Check code format with Prettier                                                                                                  |
-| `pnpm run format`                    | Format codes with Prettier                                                                                                       |
-| `pnpm run sync`                      | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `pnpm run lint`                      | Lint with ESLint                                                                                                                 |
+| `bun install`                        | Installs dependencies                                                                                                            |
+| `bun run dev`                        | Starts local dev server at `localhost:4321`                                                                                      |
+| `bun run build`                      | Build your production site to `./dist/`                                                                                          |
+| `bun run preview`                    | Preview your build locally, before deploying                                                                                     |
+| `bun run format:check`               | Check code format with Prettier                                                                                                  |
+| `bun run format`                     | Format codes with Prettier                                                                                                       |
+| `bun run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
+| `bun run lint`                       | Lint with ESLint                                                                                                                 |
 | `docker compose up -d`               | Run AstroPaper on docker, You can access with the same hostname and port informed on `dev` command.                              |
-| `docker compose run app npm install` | You can run any command above into the docker container.                                                                         |
+| `docker compose run app bun install` | You can run any command above into the docker container.                                                                         |
 | `docker build -t astropaper .`       | Build Docker image for AstroPaper.                                                                                               |
 | `docker run -p 4321:80 astropaper`   | Run AstroPaper on Docker. The website will be accessible at `http://localhost:4321`.                                             |
 
