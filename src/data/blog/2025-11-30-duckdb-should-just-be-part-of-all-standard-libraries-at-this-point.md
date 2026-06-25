@@ -16,7 +16,7 @@ I'm working on a app that will let me use Claude Code with my voice, whether at 
 
 There's [some open issues](https://github.com/anthropics/claude-agent-sdk-typescript/issues/14) to make that easier, but they don't seem to be getting any attention at the moment.
 
-I don't want to wait, so I'm looking into how Claude Code stores the data myself.
+I don't want to wait (and I also don't want to keep a parallel copy of Claude Code message history), so I'm looking into how Claude Code stores the data myself.
 
 Inside `~/.claude/projects`, it looks like this:
 
@@ -29,4 +29,20 @@ $ ls ~/.claude/projects
 
 With a folder per place I have invoked Claude Code, normalized. The normalization looks to be just `cwd.toLowerCase().replace('/','-','g')`, but I'm not sure.
 
-<Walk through my SQL code>
+Inside these folders, there's lots of stuff - for example, this is inside my `gpfs` folder:
+```
+$ ls ~/.claude/projects/-Users-benpacker--gpfs/
+15362fff-0481-4343-b7bf-c08926a5a6f5.jsonl	agent-4ddc241b.jsonl				agent-a38686b3.jsonl
+agent-0e1f958b.jsonl				agent-512383ac.jsonl				de4cd454-aac2-47f5-a8e0-2eb2c189b41e.jsonl
+agent-15129f31.jsonl				agent-72835895.jsonl				f629b63e-e7c8-4c27-a4e6-5500bd388b3a.jsonl
+agent-1b601b75.jsonl				agent-9a121f6c.jsonl
+```
+
+
+There's three things that I want to figure out about the Claude Code project file structure.
+
+First, I want to figure out which of these files represent distinct sessions and what the header of the session is.
+
+Second, I want to figure out what I need to do to reconstruct the message history. 
+
+
