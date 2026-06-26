@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "bun run build:site",
-    "build:site": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
-    "cloudflare:build": "bun install --frozen-lockfile && bun run build:site",
+    "build:site": "bun install --frozen-lockfile && bunx astro check && bunx astro build && bunx pagefind --site dist && cp -r dist/pagefind public/",
+    "cloudflare:build": "bun run build:site",
     "deploy": "bun run build && wrangler pages deploy",
     "preview": "astro preview",
     "sync": "astro sync",
