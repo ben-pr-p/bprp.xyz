@@ -28,8 +28,8 @@ Even though PostgreSQL has a fully featured permission system, implementing perm
 2. **No security definer escape**: When using database level permissions, it's common to use security definer functions as an escape hatch. When you do, you're back to manually re-implementing parts of the permissions you want to keep.
 3. **More control**: Postgres, for example, has no deny rules, and so it can be easy to accidentally grant permissions that leak when additive roles combine.
 
-
 It has a high level grants API:
+
 ```typescript
 // in some file db.ts
 import { createKyselyGrantGuard, createAccessControlPlugin } from 'kysely-access-control'
@@ -78,9 +78,8 @@ import { query } from './db.ts'
 await query(req.user.id, req.user.isAdmin).selectFrom('posts').select(['id']).execute();
 ```
 
-
-
 And a lower-level allow/deny API:
+
 ```typescript
 import { createAccessControlPlugin, KyselyAccessControlGuard, Allow, Deny, Update, Delete, ColumnInUpdateSet } from 'kysely-access-control';
 import { Database } from './my-kysely-types.ts'
@@ -113,6 +112,5 @@ const events = await db
   .execute();
 // throws 'UPDATE denied on events.is_deleted'
 ```
-
 
 Give it a try and let me know what you think!

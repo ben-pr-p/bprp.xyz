@@ -10,6 +10,7 @@ tags:
   - duckdb
 description: Spare me `bun add @duckdb/node-api`
 ---
+
 DuckDB is too useful. In addition to being a great data muncher, a great GIS platform, and universal way to connect to basically any database wire protocol or data lake format, it's just useful to integrate with regular code as a tool to use SQL - an incredible powerful query language - on your file system or anything else.
 
 I'm working on a app that will let me use Claude Code with my voice, whether at home doing dishes or folding clothes or walking my dog. The Claude Agent Typescript SDK does not make parts of this easy - specifically key operations like listing previous sessions you can resume and the previous messages that occurred during them.
@@ -30,6 +31,7 @@ $ ls ~/.claude/projects
 With a folder per place I have invoked Claude Code, normalized. The normalization looks to be just `cwd.toLowerCase().replace('/','-','g')`, but I'm not sure.
 
 Inside these folders, there's lots of stuff - for example, this is inside my `gpfs` folder:
+
 ```
 $ ls ~/.claude/projects/-Users-benpacker--gpfs/
 15362fff-0481-4343-b7bf-c08926a5a6f5.jsonl	agent-4ddc241b.jsonl				agent-a38686b3.jsonl
@@ -38,11 +40,8 @@ agent-15129f31.jsonl				agent-72835895.jsonl				f629b63e-e7c8-4c27-a4e6-5500bd38
 agent-1b601b75.jsonl				agent-9a121f6c.jsonl
 ```
 
-
 There's three things that I want to figure out about the Claude Code project file structure.
 
 First, I want to figure out which of these files represent distinct sessions and what the header of the session is.
 
-Second, I want to figure out what I need to do to reconstruct the message history. 
-
-
+Second, I want to figure out what I need to do to reconstruct the message history.

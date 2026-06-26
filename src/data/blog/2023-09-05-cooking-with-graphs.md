@@ -17,6 +17,7 @@ tags:
 > [!caution] I'm not interested in working on this anymore, but I'm leaving it up here in case you are!
 
 I'm looking to get some experience building meaningful and useful applications with large language models, including:
+
 - Prompt engineering
 - Fine tuning open source LLMs
 - A stronger sense of the pros and cons of vector similarity search vs. other forms of information retrieval or search
@@ -28,9 +29,10 @@ Until recently, I think this type of thing was impossible to build, or at least 
 
 ### Translating Recipes to Cooklang
 
-We'll start by translating a bunch (maybe 5-20k?) recipes into [Cooklang](https://cooklang.org/) using LLMs. I've already determined that GPT-4 can do this basically perfectly with few-shot prompting, but costs almost 10 cents per recipe translation (approaching more than $1k for running this on Wikibook's Recipes + NYT's recipe corpus). 
+We'll start by translating a bunch (maybe 5-20k?) recipes into [Cooklang](https://cooklang.org/) using LLMs. I've already determined that GPT-4 can do this basically perfectly with few-shot prompting, but costs almost 10 cents per recipe translation (approaching more than $1k for running this on Wikibook's Recipes + NYT's recipe corpus).
 
 I've also found that GPT-3.5 Turbo can't really get this right. It can identify the ingredients, but I can't get it to:
+
 - Successfully produce consistent line separated steps. It bunches multiple steps into a single line.
 - Only annotate [the first appearance of each ingredient](https://cooklang.org/docs/best-practices/). It annotates every appearance, making Cooklang's ingredient extraction double count.
 
@@ -41,11 +43,13 @@ I think it's definitely likely that there may not be an open source base model s
 ### Constructing the Meal
 
 I'd like a user to be able to let this service know:
+
 - the ingredients they currently have in their fridge
 - the overall vibe they want for the meal ("light summer spicy asian")
 - any dietary restrictions
 
 And for this service to pop out a meal of 3-4 dishes that:
+
 - Make maximum use of ingredients already at home
 - Match the overall vibe
 - "Go well together"
@@ -54,9 +58,10 @@ And for this service to pop out a meal of 3-4 dishes that:
 For this, I want to test out a database I've read about called [Cozo](https://github.com/cozodb/cozo). It's multi-model, with vector similarity search and a "relational-graph" model that you can query with Datalog.
 
 Cozo has a blog post describing how you can [construct layers of knowledge](https://docs.cozodb.org/en/latest/releases/v0.6.html) using their model. For this project, I think we have:
+
 - **A recipe layer**: this layer has the actual text, Cooklang, and embeddings of the recipe.
 - **An ingredient layer**: this layer maps relations between recipes and deduplicated ingredients and between ingredients and ingredients (for "go well together rules" and dietary restrictions like "kosher" or [traditional Chinese food pairing rules](https://www.farwestchina.com/blog/crazy-chinese-health-notice-answers/)
-- Optionally, a **cookware layer** and **prep time** layer, so you can only get recipes that you can actually make with the equipment and time you have. I say optionally because I think the educational goals of this project are accomplished without this reach goal, but it does add some interesting problems, such as using LLMs to extract dependency and resource use charts from the recipes. Cooklang already encodes time durations but does not have a structured way to express either the total pre-specified prep time for a meal *or* information about which steps can be executed in parallel. We should be able to use LLMs to figure out **a)** which steps can be executed in parallel, and **b)** which steps occupy cookware such as oven space, rice cooker usage, etc. so that we can determine a total cross-recipe meal cook time via a Datalog query. Again, a stretch goal, but interesting since it is a very similar problem to any "ingest these unstructured documents and come up with an optimal plan using search algorithms problem", which to me seems to be an interesting problem that is impactful to solve.
+- Optionally, a **cookware layer** and **prep time** layer, so you can only get recipes that you can actually make with the equipment and time you have. I say optionally because I think the educational goals of this project are accomplished without this reach goal, but it does add some interesting problems, such as using LLMs to extract dependency and resource use charts from the recipes. Cooklang already encodes time durations but does not have a structured way to express either the total pre-specified prep time for a meal _or_ information about which steps can be executed in parallel. We should be able to use LLMs to figure out **a)** which steps can be executed in parallel, and **b)** which steps occupy cookware such as oven space, rice cooker usage, etc. so that we can determine a total cross-recipe meal cook time via a Datalog query. Again, a stretch goal, but interesting since it is a very similar problem to any "ingest these unstructured documents and come up with an optimal plan using search algorithms problem", which to me seems to be an interesting problem that is impactful to solve.
 - Other layers to add could include **price**, **nutrition**, or **seasonality/locality**. Lots of ways to take it.
 
 Once those exist, I believe we can meal plan by doing a Graph search over recipes, and can experiment with weighting the embedding vector distance (for vibe match), ingredient distance from current inventory, and other factors until it produces good meals. We can also experiment with different ways to approach "going well together", such as balancing food groups, different cultural heuristics, or vector approaches.
@@ -72,6 +77,7 @@ In order for our meal search queries to work, these duplicates need to be resolv
 ### After It's Done
 
 Once it's done I'd like to:
+
 - Briefly see if Buzzfeed, Bon Appetit, NYT Cooking, or another similar property want to buy it and integrate it (I want to send 10 emails, wait 2 weeks, and then give up).
 - Write 1-4 blog posts about our learnings and how we accomplished things.
 - Open source it (if no one wants to buy it, of course).

@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import AboutLayout from "../layouts/AboutLayout.astro";
+import billie1 from "../assets/images/billie-1.jpg";
+import billie2 from "../assets/images/billie-2.jpg";
+import billie3 from "../assets/images/billie-3.jpg";
+import billie4 from "../assets/images/billie-4.jpg";
+
+const photos = [billie1, billie2, billie3, billie4];
+---
+
+<AboutLayout frontmatter={{ title: "Billie" }}>
+  <p>Here are photos of my lab/pitt mutt named Billie.</p>
+
+  <div class="grid gap-6">
+    {
+      photos.map((photo, index) => (
+        <Image src={photo} alt={`Billie photo ${index + 1}`} />
+      ))
+    }
+  </div>
+</AboutLayout>

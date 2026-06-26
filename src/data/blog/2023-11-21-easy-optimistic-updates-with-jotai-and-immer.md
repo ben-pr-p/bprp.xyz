@@ -16,14 +16,16 @@ tags:
 
 > Take a quick glance at [Derived Atom with Immer](/posts/derived-atom-with-immer) before reading this.
 
-Optimistic updates are hard. 
+Optimistic updates are hard.
 
 In order to implement them properly, you need to:
+
 1. Make some set of changes to your state
 2. Kick off some asynchronous action to sync that state with the server
 3. If there's an error, roll back **just** the changes you made in step 1
 
 Step 3 is of course the hard part, especially if your action is modifying some deeply nested attribute of a larger state object. If you do some naive implementation like:
+
 1. Take a snapshot of your state
 2. Make some set of changes to your state
 3. Kick off some asynchronous action to sync the state
@@ -32,6 +34,7 @@ Step 3 is of course the hard part, especially if your action is modifying some d
 You will have a bug that involves resetting any other changes to the state that happened in the interim. No good!
 
 ## Solution
+
 The solution I developed is a hook, called `useAtomImmerSaga`. Here's what it looks like to use it in a section of code responsible for updating the value of a toggle representing whether a particular relationship is directed or has no direction.
 
 ```typescript
@@ -43,9 +46,9 @@ export const useRelationshipKindHasDirection = (
   );
 
   const setHasDirection = (hasDirection: boolean) =>
-    runSaga((saga) =>
+    runSaga(saga =>
       saga
-        .update((draft) => {
+        .update(draft => {
           draft.has_direction = hasDirection;
         })
         .effect(async (_nextState, _relationshipKind) => {
@@ -61,6 +64,7 @@ export const useRelationshipKindHasDirection = (
 ```
 
 And this is what it looks like to build a component using that hook:
+
 ```tsx
 const EditableRelationshipHasDirection = ({
   id,
@@ -70,10 +74,7 @@ const EditableRelationshipHasDirection = ({
   const [hasDirection, setHasDirection] = useRelationshipKindHasDirection(id);
 
   return (
-    <button
-	  type="button"
-	  onClick={() => setHasDirection(!hasDirection)}
-    />
+    <button type="button" onClick={() => setHasDirection(!hasDirection)} />
   );
 };
 ```
@@ -84,7 +85,7 @@ The key bit is the typed `saga`, which has `.update`, `.effect`, and `.postEffec
 
 The `.update` method is applied immediately - that's the optimistic state update, which, thanks to `immer`, you can just apply via easy imperative object mutation.
 
-The `.effect` method contains the network call or other asynchronous side effect of the user action. If it throws, the changes applied during the `.update` method and ***only those changes*** will be rolled back. The full state will not be reset to what it was before the network mutation.
+The `.effect` method contains the network call or other asynchronous side effect of the user action. If it throws, the changes applied during the `.update` method and **_only those changes_** will be rolled back. The full state will not be reset to what it was before the network mutation.
 
 There is also a `.postEffect` method for applying some state update after the network call has succeeded. I was originally using it to plug in a server generated ID, but I have since switched to using client side generated branded IDs for my particular project. I'm going to keep it around for a while to make sure I don't need it for anything else.
 
@@ -136,11 +137,11 @@ export const createDerivedImmerAtom = <AtomValue, DerivedValue>(
   getDerivedValue: (value: AtomValue) => DerivedValue
 ) => {
   const result = atom(
-    (get) => {
+    get => {
       return castImmutable(getDerivedValue(get(rootAtom)));
     },
     (_get, set, update: ImmerUpdateFn<DerivedValue>) => {
-      set(rootAtom, (draft) => {
+      set(rootAtom, draft => {
         const subObject = getDerivedValue(draft as AtomValue);
         update(subObject as Draft<DerivedValue>);
       });
@@ -153,7 +154,7 @@ export const createDerivedImmerAtom = <AtomValue, DerivedValue>(
 export const asyncWithImmer = <Value>(rootAtom: Atom<Promise<Value>>) => {
   const newSyncAtom = atom<Value | undefined>(undefined);
   const result = atom(
-    (get) => {
+    get => {
       return get(rootAtom);
     },
     async (get, set, update: (draft: Draft<Value>) => void) => {
@@ -227,15 +228,15 @@ export const useAtomImmerSaga = <Value extends Objectish>(
 
     // Define the saga collector
     const collector: SagaBuilder<Value> = {
-      update: (updateFn) => {
+      update: updateFn => {
         saga.update = updateFn;
         return collector as SagaBuilderWithoutVerification;
       },
-      effect: (effectFn) => {
+      effect: effectFn => {
         saga.effect = effectFn;
         return collector as SagaBuilderWithoutVerification;
       },
-      postEffect: (postEffectFn) => {
+      postEffect: postEffectFn => {
         saga.postEffect = postEffectFn;
         return collector as SagaBuilderWithoutVerification;
       },
@@ -256,10 +257,10 @@ export const useAtomImmerSaga = <Value extends Objectish>(
       let inversePatches: Patch[] = [];
 
       // Rerender happens from optimistic update
-      setAtomValue((originalDraft) => {
+      setAtomValue(originalDraft => {
         // originalDraft is the latest state - we can only access the latest state in draft form
         const [nestedNextState, nestedPatches, nestedInversePatches] =
-          produceWithPatches(originalDraft as Value, (nestedDraft) => {
+          produceWithPatches(originalDraft as Value, nestedDraft => {
             resultContext = runUpdate(nestedDraft);
           });
 
@@ -273,18 +274,18 @@ export const useAtomImmerSaga = <Value extends Objectish>(
       // Run the effect
       if (runEffect) {
         runEffect(nextState, resultContext)
-          .then((effectResult) => {
+          .then(effectResult => {
             // On success, run the post effect hook with the effect result
             if (runPostEffect) {
-              setAtomValue((draft) => {
+              setAtomValue(draft => {
                 runPostEffect(draft, effectResult);
               });
             }
           })
-          .catch((_error) => {
+          .catch(_error => {
             // On error, undo the original update patches
             // There is an error here because there's no get
-            setAtomValue((draft) => {
+            setAtomValue(draft => {
               applyPatches(draft, inversePatches);
             });
           });

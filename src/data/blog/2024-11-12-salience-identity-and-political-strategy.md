@@ -23,13 +23,13 @@ When it comes to voting and political participation, many people are socialized 
 
 For others with weak partisan identity, understandings of themselves as being compassionate, considerate, or "making an educated choice," or participation in a particular subculture or group may be strong. Thus, they vote and act in a way that reinforces and is consistent with that self-conception. Other self-conceptions that often require particular political orientation in order to maintain consistency are numerous - think parent, professional, environmentalist, "hard worker", etc.
 
-Whenever a particular decision must be made a certain way in order to avoid identity conflict with a specific opponent for someone, we can say that self conception *X* "requires" decision *Y* or, in the weaker case, "suggests." For example, we can say that Bob's "hard worker" identity requires an anti-immigrant stance in order to make sense of why his wages have stayed stagnant despite his hard work.
+Whenever a particular decision must be made a certain way in order to avoid identity conflict with a specific opponent for someone, we can say that self conception _X_ "requires" decision _Y_ or, in the weaker case, "suggests." For example, we can say that Bob's "hard worker" identity requires an anti-immigrant stance in order to make sense of why his wages have stayed stagnant despite his hard work.
 
 **Issue/Election Salience:** There is a common usage of the term "salience" in the electoral context, which is usually thought of as how often someone hears about the election. I'll suggest an additional or different definition (which maybe should just be a different word). Rather than how often someone hears about the election, salience can be re-conceived of as the degree to which components of voters' identities are suggesting specific orientation towards an election at all.
 
 In a low salience election, most voters have no relationship between their self-conception and the electoral choice, and it is easy to vote in any direction without cognitive dissonance.
 
-In an ultra high salience election, like the recent presidential election, potentially all of someone's identity components are suggesting some orientation towards the question. Oftentimes, all of those suggestions or requirements will point in the same direction and they will have an easy time making a decision. 
+In an ultra high salience election, like the recent presidential election, potentially all of someone's identity components are suggesting some orientation towards the question. Oftentimes, all of those suggestions or requirements will point in the same direction and they will have an easy time making a decision.
 
 When they are in conflict, the individual may be undecided, may have a difficult decision, and will have to choose which self-conceptions to preserve or deprioritize as part of navigating the choice. Thus, the choice of who to vote for is also a choice over who you are and what is important to you.
 
@@ -61,13 +61,14 @@ One reason it's worth laying this out is that certain puzzles of politics, such 
 
 Of course, I am making no grand claims at this moment about how these identity components are formed and how people come feel that certain things are required or incongruent, but just suggesting that this is the right level of analysis.
 
-For example, consider the much discussed working class man who swung towards Trump in 2024. The question: "*Why would they vote for Trump? Did they really think tariffs would make things better?*" is the wrong one. The right one might be something like: "*What about their identity as a 'hard worker' who can provide for those they care about was threatened by the last 4 years, and what solutions did Trump and Harris offer for avoiding conflict with that self-conception?*"
+For example, consider the much discussed working class man who swung towards Trump in 2024. The question: "_Why would they vote for Trump? Did they really think tariffs would make things better?_" is the wrong one. The right one might be something like: "_What about their identity as a 'hard worker' who can provide for those they care about was threatened by the last 4 years, and what solutions did Trump and Harris offer for avoiding conflict with that self-conception?_"
 
 ## When might light touch ID/persuasion canvassing work?
 
 I believe it is relatively difficult for a regular short canvassing interaction to either change someone's self-conception or break any requirements that existing identity components are placing on their likely voting behavior.
 
 However, canvassing should still be effective when these conditions hold:
+
 1. The voter has no or few existing requirements on their chosen voting behavior
 2. Canvassing (either the information provided, the fact that they were canvassed, or any commitments made during the conversation) create new suggestions between a vote choice and identity components of the voter. These could be specific policies or general framings and ways of thinking.
 
@@ -89,4 +90,4 @@ If you already thought there was no way to build a left-wing political movement 
 
 One more idea that might fall out of this analysis is that anything other than strong, over-determined support is a mirage, or paper tiger, or maybe temporary tiger. If our base (defined as the number of people in relationships that re-enforce self-conceptions that require pro-socialist political activity) isn't big enough, we can still win races sometimes, and that might often (and even usually) be worth doing.
 
-However, I believe that our goal is not to win *something*, *anything* as soon as possible. Our goal is to, as quickly as possible, achieve a situation where we continuously win most things under even the toughest conditions. We should be charting the fastest path to that.
+However, I believe that our goal is not to win _something_, _anything_ as soon as possible. Our goal is to, as quickly as possible, achieve a situation where we continuously win most things under even the toughest conditions. We should be charting the fastest path to that.

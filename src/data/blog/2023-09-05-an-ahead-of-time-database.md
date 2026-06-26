@@ -17,6 +17,7 @@ tags:
 ### Background
 
 At my previous job, I had the experience of taking a batch of logic that was accomplished by 4 complex SQL queries and re-implementing it in Redis. This required:
+
 - Re-hydrating Redis from an underlying SQL store in the event of data loss
 - Choosing Redis data structures that allowed us to answer the same questions that those complex SQL queries answered with just 1-3 Redis calls
 - Adding updates those data structures in response to a bunch of different application events
@@ -24,11 +25,11 @@ At my previous job, I had the experience of taking a batch of logic that was acc
 
 Overall, the performance gains were incredible, and the project was a big success.
 
-On a giant PostgreSQL box, we could process around 100-150 "decisions" per second, where a decision involved several complex reads and depending on the outcome of the decision, between 2 and 4 additional inserts or updates. 
+On a giant PostgreSQL box, we could process around 100-150 "decisions" per second, where a decision involved several complex reads and depending on the outcome of the decision, between 2 and 4 additional inserts or updates.
 
 We had spent a long time optimizing the PostgreSQL solution, but continually ran into sets of tradeoffs where there was no perfect answer. If we used a fully normalized table structure, our reads, which involved a lot of aggregates and joins, were too slow. If we precomputed the aggregates and joins, we would run into contention and locking issues as two writes updated the same pre-computations.
 
-Once the Redis re-implementation was done, we reached 500 decisions per second with teensy resource consumption and very impressive (a millisecond or two) latency per decision. The bottleneck was still writing the results of the decisions to Postgres, and we could have pushed it much further if we needed to. 
+Once the Redis re-implementation was done, we reached 500 decisions per second with teensy resource consumption and very impressive (a millisecond or two) latency per decision. The bottleneck was still writing the results of the decisions to Postgres, and we could have pushed it much further if we needed to.
 
 We achieved this result despite the fact that Redis was, as a single threaded system, processing each decision one at a time. In fact, the single transaction nature of Redis meant that we could precompute everything without any contention issues. With everything precomputed, the time to make a single decision was so short that it didn't matter if everything ran sequentially. With everything in memory, the additional writes required to cache that precomputed work were cheap and not noticeable.
 
@@ -62,7 +63,7 @@ The fourth reason is that this query planning engine doesn't need to be separate
 
 ### Next Steps
 
-I'm hoping to write enough of the implementation (simple selects with equality + greater than where clauses and joins, inserts, updates, and deletes) to be able to verify that it's possible, good, and performant. 
+I'm hoping to write enough of the implementation (simple selects with equality + greater than where clauses and joins, inserts, updates, and deletes) to be able to verify that it's possible, good, and performant.
 
 From there, I'd want to shop it around to companies I have in mind that could be interested in acquiring such a system, and see if there are some milestones we could achieve that would make them interested in doing so, and well as if they think there's significant value in the overall idea.
 

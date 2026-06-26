@@ -69,41 +69,73 @@ const isActive = (path: string) => {
           ]}
         >
           <li class="col-span-2">
-            <a href="/guestbook" class:list={{ "active-nav": isActive("/guestbook") }}>
+            <a
+              href="/guestbook"
+              class:list={{ "active-nav": isActive("/guestbook") }}
+            >
               Guestbook
             </a>
           </li>
-          <li class="col-span-2 sm:relative group">
-            <a href="/posts" class="block w-full text-center font-medium px-4 py-3 hover:text-accent sm:px-2 sm:py-1">
+          <li class="group col-span-2 sm:relative">
+            <a
+              href="/posts"
+              class="block w-full px-4 py-3 text-center font-medium hover:text-accent sm:px-2 sm:py-1"
+            >
               Posts
               <span class="ml-1 hidden sm:inline">▼</span>
             </a>
-              <ul class="grid grid-cols-2 gap-2 sm:absolute sm:left-0 sm:top-full sm:mt-1 sm:w-48 sm:bg-background sm:border sm:border-border sm:rounded-md sm:shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible sm:transition-all sm:duration-200 sm:z-50 sm:grid-cols-1 sm:gap-0">
-                <li class="col-span-2 sm:col-span-1">
-                  <a href="/tags/political" class="block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10 relative">
-                    <span class="sm:hidden absolute left-4 top-1/2 -translate-y-1/2 text-accent/60">├─</span>
-                    <span class="sm:ml-0 ml-8">Political</span>
-                  </a>
-                </li>
-                <li class="col-span-2 sm:col-span-1">
-                  <a href="/tags/technical" class="block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10 relative">
-                    <span class="sm:hidden absolute left-4 top-1/2 -translate-y-1/2 text-accent/60">├─</span>
-                    <span class="sm:ml-0 ml-8">Technical</span>
-                  </a>
-                </li>
-                <li class="col-span-2 sm:col-span-1">
-                  <a href="/tags/seeking-collaborators" class="block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10 relative">
-                    <span class="sm:hidden absolute left-4 top-1/2 -translate-y-1/2 text-accent/60">├─</span>
-                    <span class="sm:ml-0 ml-8">Looking for Collaborators</span>
-                  </a>
-                </li>
-                <li class="col-span-2 sm:col-span-1">
-                  <a href="/tags" class="block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10 relative">
-                    <span class="sm:hidden absolute left-4 top-1/2 -translate-y-1/2 text-accent/60">└─</span>
-                    <span class="sm:ml-0 ml-8">All Tags</span>
-                  </a>
-                </li>
-              </ul>
+            <ul
+              class="invisible grid grid-cols-2 gap-2 opacity-0 group-hover:visible group-hover:opacity-100 sm:absolute sm:top-full sm:left-0 sm:z-50 sm:mt-1 sm:w-48 sm:grid-cols-1 sm:gap-0 sm:rounded-md sm:border sm:border-border sm:bg-background sm:shadow-lg sm:transition-all sm:duration-200"
+            >
+              <li class="col-span-2 sm:col-span-1">
+                <a
+                  href="/tags/political"
+                  class="relative block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10"
+                >
+                  <span
+                    class="absolute top-1/2 left-4 -translate-y-1/2 text-accent/60 sm:hidden"
+                    >├─</span
+                  >
+                  <span class="ml-8 sm:ml-0">Political</span>
+                </a>
+              </li>
+              <li class="col-span-2 sm:col-span-1">
+                <a
+                  href="/tags/technical"
+                  class="relative block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10"
+                >
+                  <span
+                    class="absolute top-1/2 left-4 -translate-y-1/2 text-accent/60 sm:hidden"
+                    >├─</span
+                  >
+                  <span class="ml-8 sm:ml-0">Technical</span>
+                </a>
+              </li>
+              <li class="col-span-2 sm:col-span-1">
+                <a
+                  href="/tags/seeking-collaborators"
+                  class="relative block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10"
+                >
+                  <span
+                    class="absolute top-1/2 left-4 -translate-y-1/2 text-accent/60 sm:hidden"
+                    >├─</span
+                  >
+                  <span class="ml-8 sm:ml-0">Looking for Collaborators</span>
+                </a>
+              </li>
+              <li class="col-span-2 sm:col-span-1">
+                <a
+                  href="/tags"
+                  class="relative block py-2 text-center font-medium hover:text-accent sm:pl-4 sm:text-left sm:hover:bg-accent/10"
+                >
+                  <span
+                    class="absolute top-1/2 left-4 -translate-y-1/2 text-accent/60 sm:hidden"
+                    >└─</span
+                  >
+                  <span class="ml-8 sm:ml-0">All Tags</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="col-span-2">
             <a href="/about" class:list={{ "active-nav": isActive("/about") }}>

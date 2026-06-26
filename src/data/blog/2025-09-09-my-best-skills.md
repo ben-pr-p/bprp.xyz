@@ -8,6 +8,7 @@ featured: true
 draft: true
 description: I wrote a blog post where I mansplain how good of a listener I am
 ---
+
 ## **1 – I'm a good listener.**
 
 By this, I do not mean that I make you feel heard or am good to vent with. In fact, as many people in my personal life will attest, venting with me is often unsatisfying and fails to deliver the catharsis one may find with a different peer.
