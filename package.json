@@ -5,7 +5,10 @@
   "packageManager": "bun@1.3.5",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
+    "build": "bun run build:site",
+    "build:site": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
+    "cloudflare:build": "bun install --frozen-lockfile && bun run build:site",
+    "deploy": "bun run build && wrangler pages deploy",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -43,6 +46,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.0"
+    "typescript-eslint": "^8.62.0",
+    "wrangler": "^4.105.0"
   }
 }
